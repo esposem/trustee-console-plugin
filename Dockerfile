@@ -7,7 +7,7 @@ WORKDIR /usr/src/app
 RUN LOCAL_YARN="node $(awk '/yarnPath:/{print $2}' .yarnrc.yml)" && \
     $LOCAL_YARN install --immutable && $LOCAL_YARN build
 
-FROM registry.access.redhat.com/ubi9/nginx-120:latest
+FROM registry.access.redhat.com/ubi10/nginx-126:latest
 
 COPY --from=build /usr/src/app/dist /usr/share/nginx/html
 USER 1001
